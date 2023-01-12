@@ -3,7 +3,7 @@ from Block import *
 from Spawner import *
 
 def loadScreen(scn):
-    f = open(scn, 'r')
+    f = open("screens/"+scn, 'r')
     lines = f.readlines()
     f.close()
     
@@ -38,6 +38,6 @@ def loadScreen(scn):
     return tiles
                 
     
-loadScreen("screens/1.scn")
+#loadScreen("screens/1.scn")
 
 
