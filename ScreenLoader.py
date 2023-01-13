@@ -1,6 +1,7 @@
 import pygame, sys, math
 from Block import *
 from Spawner import *
+from MtDew import *
 
 def loadScreen(scn):
     f = open(scn, 'r')
@@ -11,6 +12,7 @@ def loadScreen(scn):
     offset = 0
     tiles = []
     blocks = []
+    cans = []
     spawners = []
     
     newLines = []
@@ -28,12 +30,15 @@ def loadScreen(scn):
         for x, c in enumerate(line):
             if c == "X":
                 spawners += [Spawner([x*size+offset, y*size+offset])]
+            if c == "Y":
+                cans += [Can([x*size+offset, y*size+offset])]
             if c == "#":
                 blocks += [Block([x*size+offset, y*size+offset])]
             if c == "_":
                 blocks += [Block([x*size+offset, y*size+offset], 37)]
     
-    tiles = [blocks, 
+    tiles = [blocks,
+            cans,
             spawners]            
     return tiles
                 

@@ -28,10 +28,11 @@ while True:
     score = MyGameHud("Damage: ",[0,0])
     timer = MyGameHud("Time: ",[900-200,0])
 
-    tiles = loadScreen("1.scn")
+    tiles = loadScreen("4.scn")
     walls = tiles[0]
-    spawners = tiles[1]
-
+    spawners = tiles[2]
+    cans = tiles[1]
+    
     kills = 0;
     gametime = 0
          
@@ -102,6 +103,12 @@ while True:
         for wall in walls:
             screen.blit(wall.image, wall.rect)
         if debug: print("\t walls done: ", time.time()-startTime)
+        screen.blit(timer.image, timer.rect)
+        screen.blit(score.image, score.rect)
+        screen.blit(player.image, player.rect)
+        for can in cans:
+            screen.blit(can.image, can.rect)
+        if debug: print("\t cans done: ", time.time()-startTime)
         screen.blit(timer.image, timer.rect)
         screen.blit(score.image, score.rect)
         screen.blit(player.image, player.rect)
