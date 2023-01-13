@@ -14,6 +14,7 @@ def loadScreen(scn):
     blocks = []
     cans = []
     spawners = []
+    playerPos = []
     
     newLines = []
     for line in lines:
@@ -28,6 +29,8 @@ def loadScreen(scn):
     
     for y, line in enumerate(lines):
         for x, c in enumerate(line):
+            if c == "P":
+                playerPos = [x*size+offset, y*size+offset]
             if c == "X":
                 spawners += [Spawner([x*size+offset, y*size+offset])]
             if c == "Y":
@@ -37,7 +40,8 @@ def loadScreen(scn):
             if c == "_":
                 blocks += [Block([x*size+offset, y*size+offset], 37)]
     
-    tiles = [blocks,
+    tiles = [playerPos,
+            blocks,
             cans,
             spawners]            
     return tiles
