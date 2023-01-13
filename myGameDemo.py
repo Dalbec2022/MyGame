@@ -28,7 +28,7 @@ while True:
     score = MyGameHud("Damage: ",[0,0])
     timer = MyGameHud("Time: ",[900-200,0])
 
-    tiles = loadScreen("4.scn")
+    tiles = loadScreen("2.scn")
     walls = tiles[0]
     spawners = tiles[2]
     cans = tiles[1]
