@@ -23,15 +23,16 @@ mode = "Play"
 
 while True:
     counter = 0;
-    player = MasterChief(4, [900/2, 700/2])
-    objects = [player]  
+    
     score = MyGameHud("Damage: ",[0,0])
     timer = MyGameHud("Time: ",[900-200,0])
 
-    tiles = loadScreen("4.scn")
-    walls = tiles[0]
-    spawners = tiles[2]
-    cans = tiles[1]
+    tiles = loadScreen("3.scn")
+    player = MasterChief(4, tiles[0])
+    objects = [player]  
+    walls = tiles[1]
+    spawners = tiles[3]
+    cans = tiles[2]
     
     kills = 0;
     gametime = 0
