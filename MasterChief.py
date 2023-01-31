@@ -49,31 +49,14 @@ class MasterChief(FireBall):
         height = size[1]
         if not self.didBounceY:
             if self.rect.bottom > height:
-                self.speedy = -self.speedy
-                self.move()
-                self.speedy = 0
-                self.didBounceY = True
                 return"bottom"
             if self.rect.top < 0:
-                self.speedy = -self.speedy
-                self.move()
-                self.speedy = 0
-                self.didBounceY = True
-                return"bottom"
-                
+                return"top"
         if not self.didBounceX:
             if self.rect.right > width:
-                self.speedx = -self.speedx
-                self.move()
-                self.speedx = 0
-                self.didBounceX = True
-                return"bottom"
+                return"right"
             if self.rect.left < 0:
-                self.speedx = -self.speedx 
-                self.move()
-                self.speedx = 0
-                self.didBounceX = True
-                return"bottom"
+                return"left"
         return"none"
             
     def objectCollide(self, other):
