@@ -27,7 +27,7 @@ while True:
     score = MyGameHud("Damage: ",[0,0])
     timer = MyGameHud("Time: ",[900-200,0])
 
-    tiles = loadScreen("2.scn")
+    tiles = loadScreen("1.scn")
     player = MasterChief(4, tiles[0])
     objects = [player]  
     walls = tiles[1]
