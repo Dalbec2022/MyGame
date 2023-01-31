@@ -26,8 +26,9 @@ while True:
     
     score = MyGameHud("Damage: ",[0,0])
     timer = MyGameHud("Time: ",[900-200,0])
-
-    tiles = loadScreen("4.scn")
+    
+    scn = 1
+    tiles = loadScreen(str(scn)+".scn")
     player = MasterChief(4, tiles[0])
     objects = [player]  
     walls = tiles[1]
@@ -92,6 +93,15 @@ while True:
                 hittingobject.wallTileCollide(wall)
         if debug: print("collisions done: ", time.time()-startTime)
                         
+        for can in cans:
+            if player.objectCollide(can):
+                scn += 1
+                tiles = loadScreen(str(scn)+".scn")
+                player = MasterChief(4, tiles[0])
+                objects = [player]  
+                walls = tiles[1]
+                spawners = tiles[3]
+                cans = tiles[2]
         
         screen.fill((100, 100, 100))
         if debug: print("\t fill done: ", time.time()-startTime)

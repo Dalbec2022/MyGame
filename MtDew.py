@@ -7,6 +7,7 @@ class Can():
         else:
             self.image = pygame.image.load("Can"+str(size)+".png")
         self.rect = self.image.get_rect(topleft = startPos)
+        self.rad = self.rect.width/2
         self.kind = "can"
 
     def update(self, size):
