@@ -351270,4 +351270,4 @@ while True:
 
 
 
-#----------it might be a while if you scroll-------------------------------------#
+#----------it might take a while if you scroll-------------------------------------#
