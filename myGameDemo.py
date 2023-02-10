@@ -19,9 +19,24 @@ screen = pygame.display.set_mode(size)
 
          
 
-mode = "Play"
+mode = "StartGame"
 
 while True:
+    bgimage = pygame.image.load("Images/Backgrounds/StartScreen-basic.png")
+    bgrect = bgimage.get_rect()
+    while mode == "StartGame":
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit();
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    mode="Play"
+        screen.fill((100, 100, 100))
+        screen.blit(bgimage, bgrect)
+        pygame.display.flip()
+        clock.tick(60)
+
+
     counter = 0;
     
     score = MyGameHud("Damage: ",[0,0])
