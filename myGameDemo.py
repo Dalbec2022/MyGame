@@ -16,7 +16,7 @@ clock = pygame.time.Clock();
 
 size = [1800, 1000]
 screen = pygame.display.set_mode(size)
-
+time = 0
          
 
 mode = "StartGame"
@@ -51,7 +51,7 @@ while True:
     cans = tiles[2]
     
     kills = 0;
-    gametime = 0
+   
          
     while mode == "Play":
         if debug: 
@@ -92,7 +92,8 @@ while True:
             
         if debug: print("object update done: ", time.time()-startTime)
         
-        timer.update(int(gametime/60))
+        time += 1
+        timer.update(int(time/60))
         score.update(kills)
         if kills >= 1000:
             mode = "Game Over"
