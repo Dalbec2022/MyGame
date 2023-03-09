@@ -4,6 +4,8 @@ from FireBall import *
 class MasterChief(FireBall):
     def __init__(self, maxSpeed=4, startPos=[-350,100]):
         FireBall.__init__(self, "Master.png",  [0,0], startPos)
+        self.rightimage = pygame.image.load("RightMaster.png")
+        self.leftimage = pygame.image.load("leftMaster.png")
         self.maxSpeed=maxSpeed
         self.kind = "player"
         
@@ -26,8 +28,10 @@ class MasterChief(FireBall):
     def goKey(self, direction):
         if direction == "left":
             self.speedx = -self.maxSpeed
+            self.image=self.leftimage
         elif direction == "right":
             self.speedx = self.maxSpeed
+            self.image=self.rightimage
         elif direction == "jump":
             if not self.jumping:
                 self.speedy = -self.jumpPower
