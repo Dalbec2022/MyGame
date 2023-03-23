@@ -172,4 +172,6 @@ while True:
         clock.tick(60)
     
     while mode == "Restart":
+        time = 0
+        timer.update(int(time/60))
         mode="Play"
