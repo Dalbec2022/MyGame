@@ -19,6 +19,7 @@ screen = pygame.display.set_mode(size)
 time = 0
          
 
+
 mode = "StartGame"
 
 while True:
