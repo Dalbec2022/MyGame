@@ -13,6 +13,8 @@ class MasterChief(FireBall):
         self.jumping = True
         self.jumpPower = 30
         
+        #self.moveSound = pygame.mixer.Sound(fullname)
+        
     def update(self,size):            
         self.move()
         return self.wallCollide(size)
@@ -23,6 +25,8 @@ class MasterChief(FireBall):
         self.didBounceY = False
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
+        #if speedx != 0:
+        #    self.moveSound.play()
 
         
     def goKey(self, direction):

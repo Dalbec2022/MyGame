@@ -7,6 +7,9 @@ from ScreenLoader import *
 from Alert import *
 pygame.init()
 
+if not pygame.mixer:
+    print("Warning, sound disabled")
+
 debug = False
 startTime = time.time()
 
