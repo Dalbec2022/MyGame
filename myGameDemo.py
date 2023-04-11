@@ -1,4 +1,4 @@
-import pygame, sys, math, random, time
+import pygame, sys, math, random, time             
 from Wall import *
 from FireBall import *
 from MasterChief import *
@@ -7,8 +7,7 @@ from ScreenLoader import *
 from Alert import *
 pygame.init()
 
-if not pygame.mixer:
-    print("Warning, sound disabled")
+if not pygame.mixer: print("Warning, sound disabled")
 
 debug = False
 startTime = time.time()
@@ -150,7 +149,7 @@ while True:
         pygame.display.flip()
         if debug: print("draw done: ", time.time()-startTime)
         clock.tick(60)
-        if (clock.get_fps() < 40):
+        if (clock.get_fps() < 20):
             print("slow", clock.get_fps())
             #debug = True
         else:
