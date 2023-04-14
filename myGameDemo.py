@@ -6,6 +6,7 @@ from MyGameHud import *
 from ScreenLoader import *
 from Alert import *
 pygame.init()
+pygame.mixer.pre_init(44100, -16, 1, 512)
 
 if not pygame.mixer: print("Warning, sound disabled")
 
