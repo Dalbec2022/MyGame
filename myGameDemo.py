@@ -24,39 +24,55 @@ time = 0
 
 mode = "StartGame"
 
+restarted = False
+
 while True:
-    bgimage = pygame.image.load("Images/Backgrounds/StartScreen-basic.png")
-    bgrect = bgimage.get_rect()
+    if mode == "StartGame":
+        bgimage = pygame.image.load("Images/Backgrounds/StartScreen-basic.png")
+        bgrect = bgimage.get_rect()
+        pygame.mixer.music.load("Sounds/R-Menu-EditedAgain.ogg")
+        pygame.mixer.music.play(-1)
     while mode == "StartGame":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit();
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
+                    pygame.mixer.music.fadeout(1000)
                     mode="Play"
         screen.fill((100, 100, 100))
         screen.blit(bgimage, bgrect)
         pygame.display.flip()
         clock.tick(60)
 
-
-    counter = 0;
-    
-    score = MyGameHud("Damage: ",[0,0])
-    timer = MyGameHud("Time: ",[900-200,0])
-    
-    scn = 1
-    tiles = loadScreen(str(scn)+".scn")
-    player = MasterChief(4, tiles[0])
-    objects = [player]  
-    walls = tiles[1]
-    spawners = tiles[3]
-    cans = tiles[2]
-    
-    kills = 0;
+    if mode == "Play":
+        counter = 0;
+        
+        score = MyGameHud("Damage: ",[0,0])
+        timer = MyGameHud("Time: ",[900-200,0])
+        
+        scn = 1
+        tiles = loadScreen(str(scn)+".scn")
+        player = MasterChief(4, tiles[0])
+        objects = [player]  
+        walls = tiles[1]
+        spawners = tiles[3]
+        cans = tiles[2]
+        
+        kills = 0;
+        
+        if not restarted:
+            pygame.mixer.music.load("Sounds/Main.ogg")
+            pygame.mixer.music.set_volume(0)
+            pygame.mixer.music.play(-1)
+            
+            vol=0
    
          
     while mode == "Play":
+        if vol < 1:
+            vol+=1/(60*1)
+            pygame.mixer.music.set_volume(vol)
         if debug: 
             startTime = time.time()
             print("-------------", len(walls))
@@ -103,6 +119,7 @@ while True:
         score.update(kills)
         if kills >= 1000:
             mode = "Game Over"
+            pygame.mixer.music.fadeout(1000)
         if debug: print("timer update done: ", time.time()-startTime)
             
         for hittingobject in objects:
@@ -155,9 +172,17 @@ while True:
         else:
             debug = False
     
-    alert = Alert([800,500])
-    
+    if mode == "Game Over":
+        alert = Alert([800,500])
+        pygame.mixer.music.load("Sounds/Death Sound.ogg")
+        pygame.mixer.music.set_volume(0)
+        pygame.mixer.music.play()
+        
+        vol=0
     while mode == "Game Over":
+        if vol < 1:
+            vol+=1/(60*1)
+            pygame.mixer.music.set_volume(vol)
         if debug: 
             startTime = time.time()
             print("-------------", len(walls))
@@ -167,6 +192,7 @@ while True:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     mode = "Play"
+                    restarted = False
         
         screen.fill((100, 100, 100))
         screen.blit(alert.image, alert.rect)
@@ -178,3 +204,4 @@ while True:
         time = 0
         timer.update(int(time/60))
         mode="Play"
+        restarted = True
