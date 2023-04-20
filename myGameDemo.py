@@ -43,7 +43,7 @@ while True:
 
     counter = 0;
     
-    score = MyGameHud("Damage: ",[0,0])
+    score = MyGameHud("Health: ",[0,0])
     timer = MyGameHud("Time: ",[900-200,0])
     
     scn = 1
@@ -54,7 +54,7 @@ while True:
     spawners = tiles[3]
     cans = tiles[2]
     
-    kills = 0;
+    kills = 200;
    
          
     while mode == "Play":
@@ -102,7 +102,7 @@ while True:
         time += 1
         timer.update(int(time/60))
         score.update(kills)
-        if kills >= 1000:
+        if kills <= 0:
             mode = "Game Over"
         if debug: print("timer update done: ", time.time()-startTime)
             
@@ -111,7 +111,7 @@ while True:
                 if hittingobject.objectCollide(hitobject):
                     if hittingobject.kind == "player":
                         objects.remove(hitobject)
-                        kills += 100
+                        kills -= 100
             for wall in walls:
                 hittingobject.wallTileCollide(wall)
         if debug: print("collisions done: ", time.time()-startTime)
