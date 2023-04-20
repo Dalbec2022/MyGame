@@ -14,6 +14,7 @@ class MasterChief(FireBall):
         self.jumpPower = 30
         
         self.spawnsound = pygame.mixer.Sound("Sounds/Spawn.ogg")
+        self.walkingsound = pygame.mixer.Sound("Sounds/Walking.ogg")
         self.spawnsound.play()
         
         #self.moveSound = pygame.mixer.Sound(fullname)
@@ -26,6 +27,8 @@ class MasterChief(FireBall):
         self.speedy += self.gravity
         self.didBounceX = False
         self.didBounceY = False
+        if self.speedx != 0:
+            self.walkingsound.play()
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
         #if speedx != 0:
@@ -39,6 +42,7 @@ class MasterChief(FireBall):
         elif direction == "right":
             self.speedx = self.maxSpeed
             self.image=self.rightimage
+            
         elif direction == "jump":
             if not self.jumping:
                 self.speedy = -self.jumpPower
