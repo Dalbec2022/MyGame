@@ -13,6 +13,9 @@ class MasterChief(FireBall):
         self.jumping = True
         self.jumpPower = 30
         
+        self.spawnsound = pygame.mixer.Sound("Sounds/Spawn.ogg")
+        self.spawnsound.play()
+        
         #self.moveSound = pygame.mixer.Sound(fullname)
         
     def update(self,size):            
