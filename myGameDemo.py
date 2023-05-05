@@ -38,7 +38,7 @@ while True:
         screen.fill((100, 100, 100))
         screen.blit(bgimage, bgrect)
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(100)
 
 
     counter = 0;
@@ -54,7 +54,7 @@ while True:
     spawners = tiles[3]
     cans = tiles[2]
     
-    kills = 200;
+    kills = 500;
    
          
     while mode == "Play":
@@ -100,7 +100,7 @@ while True:
         if debug: print("object update done: ", time.time()-startTime)
         
         time += 1
-        timer.update(int(time/60))
+        timer.update(int(time/100))
         score.update(kills)
         if kills <= 0:
             mode = "Game Over"
@@ -149,7 +149,7 @@ while True:
         
         pygame.display.flip()
         if debug: print("draw done: ", time.time()-startTime)
-        clock.tick(60)
+        clock.tick(100)
         if (clock.get_fps() < 2):
             print("slow", clock.get_fps())
             #debug = True
@@ -173,9 +173,9 @@ while True:
         screen.blit(alert.image, alert.rect)
 
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(100)
     
     while mode == "Restart":
         time = 0
-        timer.update(int(time/60))
+        timer.update(int(time/100))
         mode="Play"

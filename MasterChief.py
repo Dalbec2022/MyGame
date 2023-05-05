@@ -9,9 +9,9 @@ class MasterChief(FireBall):
         self.maxSpeed=maxSpeed
         self.kind = "player"
         
-        self.gravity = 1
+        self.gravity = 0.5
         self.jumping = True
-        self.jumpPower = 30
+        self.jumpPower = 20
         
         self.spawnsound = pygame.mixer.Sound("Sounds/Spawn.ogg")
         self.walkingsound = pygame.mixer.Sound("Sounds/Walking.ogg")
