@@ -63,7 +63,7 @@ class MasterChief(FireBall):
         width = size[0]
         height = size[1]
         if not self.didBounceY:
-            if self.rect.bottom > height:
+            if self.rect.top > height:
                 return"bottom"
             if self.rect.top < 0:
                 return"top"
