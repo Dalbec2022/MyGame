@@ -94,8 +94,8 @@ while True:
         if debug: print("object spawn done: ", time.time()-startTime)
         
         for object in objects:
-            if object.update(size)=="right":
-                pass
+            if object.update(size)=="bottom":
+                mode = "Game Over"
             
         if debug: print("object update done: ", time.time()-startTime)
         
