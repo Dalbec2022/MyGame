@@ -111,7 +111,7 @@ while True:
                 if hittingobject.objectCollide(hitobject):
                     if hittingobject.kind == "player":
                         objects.remove(hitobject)
-                        kills -= 100
+                        kills -= 50
             for wall in walls:
                 hittingobject.wallTileCollide(wall)
         if debug: print("collisions done: ", time.time()-startTime)
