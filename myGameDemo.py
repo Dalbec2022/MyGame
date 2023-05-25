@@ -54,7 +54,7 @@ while True:
     spawners = tiles[3]
     cans = tiles[2]
     
-    kills = 500;
+    kills = 1000;
    
          
     while mode == "Play":
@@ -111,7 +111,7 @@ while True:
                 if hittingobject.objectCollide(hitobject):
                     if hittingobject.kind == "player":
                         objects.remove(hitobject)
-                        kills -= 50
+                        kills -=50
             for wall in walls:
                 hittingobject.wallTileCollide(wall)
         if debug: print("collisions done: ", time.time()-startTime)
