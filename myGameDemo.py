@@ -28,6 +28,8 @@ mode = "StartGame"
 while True:
     bgimage = pygame.image.load("Images/Backgrounds/StartScreen-basic.png")
     bgrect = bgimage.get_rect()
+    pygame.mixer.music.load("Sounds/R-Menu-EditedAgain - Copy.ogg")
+    pygame.mixer.music.play(loops=-1)
     while mode == "StartGame":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -55,7 +57,8 @@ while True:
     cans = tiles[2]
     
     kills = 1000;
-   
+    pygame.mixer.music.load("Sounds/Main.ogg")
+    pygame.mixer.music.play(loops=-1)
          
     while mode == "Play":
         if debug: 
@@ -93,6 +96,8 @@ while True:
                         break
         if debug: print("object spawn done: ", time.time()-startTime)
         
+          
+    
         for object in objects:
             if object.update(size)=="bottom":
                 mode = "Game Over"
@@ -157,6 +162,9 @@ while True:
             debug = False
     
     alert = Alert([800,500])
+    
+    pygame.mixer.music.load("Sounds/Death Sound.ogg")
+    pygame.mixer.music.play(loops=-1) 
     
     while mode == "Game Over":
         if debug: 
