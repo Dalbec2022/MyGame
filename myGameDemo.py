@@ -163,7 +163,7 @@ while True:
     
     alert = Alert([800,500])
     
-    pygame.mixer.music.load("Sounds/Death Sound.ogg")
+    pygame.mixer.music.load("Sounds/Riff.ogg")
     pygame.mixer.music.play(loops=-1) 
     
     while mode == "Game Over":
